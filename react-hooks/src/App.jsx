@@ -1,18 +1,46 @@
-import React, { useContext } from 'react'
-import { ThemeContext } from './component/ThemeContext'
+import React, { useContext } from "react";
+import { ThemeContext } from "./component/UseContext/ThemeContext";
 
 const App = () => {
-
-  const {theme,setTheme} =useContext(ThemeContext);
-  console.log(theme);
+  const { theme, setTheme, count, setCount } = useContext(ThemeContext);
+  // console.log(theme);
   return (
-    <div>
-      <h1 className='text-green-500 font-bold text-[30px] '>Hello word</h1>
-      <button onClick={()=>{
-        setTheme(theme == "light"?"dark":"light")
-      }}>Change Theme</button>
-    </div>
-  )
-}
+    <div className="m-4">
+      <h1 className="text-green-500 font-bold text-[30px] ">ReactJS Hooks</h1>
+      <div className="counts">
+        <h1 className="font-bold text-[30px]">Use State Example</h1>
+        <h2 className="font-bold text-[30px]">{count}</h2>
+        <button
+          className="bg-green-700 text-white p-2"
+          onClick={() => {
+            setCount(count + 1);
+          }}
+        >
+          Increment
+        </button>
+        <button
+          className="bg-green-700 text-white p-2 ml-2"
+          onClick={() => {
+            setCount(count - 1);
+          }}
+        >
+          Decrement
+        </button>
+      </div>
+      <div className="contex">
+        <h1 className="font-bold text-[30px]">Use Context Example</h1>
 
-export default App
+        <button
+          className="bg-green-700 text-white p-2 m-2"
+          onClick={() => {
+            setTheme(theme == "light" ? "dark" : "light");
+          }}
+        >
+          Toggle Theme (Current: {theme})
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default App;

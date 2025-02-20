@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "./component/UseContext/ThemeContext";
 import ColorPicker from "./component/ColorPicker/ColorPicker";
+import UserRegister from "./component/UserFrom/UserRegister";
 
 const App = () => {
   const { theme, setTheme, count, setCount } = useContext(ThemeContext);
   // console.log(theme);
   return (
     <div className="m-4">
+      <UserRegister/>
       <h1 className="text-green-500 font-bold text-[30px] ">ReactJS Hooks</h1>
       <div className="counts">
         <h1 className="font-bold text-[30px]">Use State Example</h1>

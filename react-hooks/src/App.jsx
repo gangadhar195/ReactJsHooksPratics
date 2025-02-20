@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "./component/UseContext/ThemeContext";
+import ColorPicker from "./component/ColorPicker/ColorPicker";
 
 const App = () => {
   const { theme, setTheme, count, setCount } = useContext(ThemeContext);
@@ -39,6 +40,7 @@ const App = () => {
           Toggle Theme (Current: {theme})
         </button>
       </div>
+      <ColorPicker/>
     </div>
   );
 };

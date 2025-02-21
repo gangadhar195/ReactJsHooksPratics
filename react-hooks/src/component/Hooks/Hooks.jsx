@@ -5,6 +5,7 @@ import React, {
   useMemo,
   useCallback,
   useReducer,
+  useLayoutEffect,
 } from "react";
 // import Header from "./Header";
 
@@ -38,24 +39,35 @@ const Hooks = () => {
   // },[])
 
   //UseReducer
-  const initialSate = { count: 0 };
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "Increse": {
-        return { count: state.count + 1 };
-      }
-      case "Decrese": {
-        return { count: state.count - 1 };
-      }
-      case "input": {
-        return { count: action.payload };
-      }
-      default: {
-        return state;
-      }
-    }
-  };
-  const [state, dispatch] = useReducer(reducer, initialSate);
+//   const initialSate = { count: 0 };
+//   const reducer = (state, action) => {
+//     switch (action.type) {
+//       case "Increse": {
+//         return { count: state.count + 1 };
+//       }
+//       case "Decrese": {
+//         return { count: state.count - 1 };
+//       }
+//       case "input": {
+//         return { count: action.payload };
+//       }
+//       default: {
+//         return state;
+//       }
+//     }
+//   };
+//   const [state, dispatch] = useReducer(reducer, initialSate);
+
+//UseLayoutEffect
+
+useLayoutEffect(()=>{
+    console.log("Use Layout Effetc");
+    
+},[])
+useEffect(()=>{
+    console.log("Use Effect");
+    
+})
 
   return (
     <div className="flex flex-col justify-center items-center mt-5 ">
@@ -97,7 +109,7 @@ const Hooks = () => {
       <button className='bg-sky-500 hover:bg-sky-700 p-2'onClick={()=>{setCount(prev=>prev+1)}} >+1</button>
       </div> */}
 
-      <div className=" flex flex-col border-2 p-2 ">
+      {/* <div className=" flex flex-col border-2 p-2 ">
         <h1 className="text-center">Use Reducer</h1>
         <h1 className="text-center font-bold">{state.count}</h1>
         <div className=" flex flex-row m-auto p-">
@@ -121,6 +133,13 @@ const Hooks = () => {
          
           onChange={(e) =>dispatch({type:'input', payload:Number(e.target.value)})}
           type="number"/>
+      </div> */}
+
+      <div>
+        <h1>Use Layout Effect</h1>
+        {Array(400).fill('').map((item,index)=>{
+           return <li key={index}>{Math.pow(Math.random(),10)}</li>
+        })}
       </div>
     </div>
   );

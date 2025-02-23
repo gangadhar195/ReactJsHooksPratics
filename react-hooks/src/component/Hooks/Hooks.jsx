@@ -10,7 +10,7 @@ import React, {
 // import Header from "./Header";
 
 const Hooks = () => {
-  //   const [count, setCount] = useState(0);
+    // const [count, setCount] = useState(0);
   //     const[number,setNumber]=useState(0);
   //   // const[ren,setRen]=useState(0);
   //   const ren = useRef();
@@ -39,7 +39,7 @@ const Hooks = () => {
   // },[])
 
   //UseReducer
-//   const initialSate = { count: 0 };
+  // const initialSate = { count: 0 };
 //   const reducer = (state, action) => {
 //     switch (action.type) {
 //       case "Increse": {
@@ -60,14 +60,26 @@ const Hooks = () => {
 
 //UseLayoutEffect
 
-useLayoutEffect(()=>{
-    console.log("Use Layout Effetc");
+// useLayoutEffect(()=>{
+//     console.log("Use Layout Effetc");
     
-},[])
-useEffect(()=>{
-    console.log("Use Effect");
+// },[])
+// useEffect(()=>{
+//     console.log("Use Effect");
     
-})
+// })
+const initilazation = {count:0}
+const reducer = (state,action)=>{
+  switch(action.type){
+    case 'Increment':
+          return {count:state.count +1}
+    case 'Decrement':
+      return  {count:state.count -1}
+    default:
+      return state;
+  }
+}
+const[state,dispatch]=useReducer(reducer,initilazation);
 
   return (
     <div className="flex flex-col justify-center items-center mt-5 ">
@@ -135,14 +147,20 @@ useEffect(()=>{
           type="number"/>
       </div> */}
 
-      <div>
+      {/* <div>
         <h1>Use Layout Effect</h1>
         {Array(400).fill('').map((item,index)=>{
            return <li key={index}>{Math.pow(Math.random(),10)}</li>
         })}
+      </div> */}
+      <div>
+      <h1>Use Reducer</h1>
+        <h2>{state.count}</h2>
+        <button onClick={()=>dispatch({type:'Increment'})}>Increment</button>
+        <button onClick={()=>dispatch({type:'Decrement'})}>Decrement</button>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Hooks;
